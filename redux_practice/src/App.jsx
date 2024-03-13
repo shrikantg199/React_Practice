@@ -4,11 +4,13 @@ import { addTodo } from "./redux/Slices";
 
 const App = () => {
   const [input, setInput] = useState();
+  // Redux hooks for dispatching actions and selecting data from the store
   const dispatch = useDispatch();
   const todo = useSelector((state) => state.todo.todos);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    // Dispatching the addTodo action with the input value
     dispatch(addTodo(input));
     setInput("");
   };
@@ -28,6 +30,7 @@ const App = () => {
           onChange={(e) => setInput(e.target.value)}
         />
       </form>
+      {/* Displaying the list of todos */}
       <div className=" justify-center">
         {" "}
         {todo.map((item, id) => (
