@@ -5,7 +5,6 @@ const Navbar = () => {
   const [isActive, setIsactive] = useState(false);
   const NavigationHandler = () => {
     setIsactive(!isActive);
-    console.log(!isActive);
   };
   const navigation = [
     {
@@ -30,7 +29,7 @@ const Navbar = () => {
       <div className="bg-white  justify-between text-xl items-center flex absolute  h-16 w-screen text-">
         <div className="sm:ml-10 m-4 gap-2 flex items-center justify-center ">
           <GiHamburgerMenu
-            className="sm:hidden text-2xl"
+            className="sm:hidden text-2xl cursor-pointer"
             onClick={NavigationHandler}
           />
           <h1>Logo</h1>
@@ -53,7 +52,7 @@ const Navbar = () => {
       >
         <ul className="text-center p-12  text-xl mr-20 w-60 ">
           <IoMdClose
-            className="ml-14 text-2xl"
+            className="ml-14 text-2xl cursor-pointer"
             onClick={() => setIsactive(!isActive)}
           />
           {navigation.map((item, index) => (
