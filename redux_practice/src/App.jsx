@@ -4,13 +4,13 @@ import { addTodo } from "./redux/Slices";
 
 const App = () => {
   const [input, setInput] = useState();
-  // Redux hooks for dispatching actions and selecting data from the store
+
   const dispatch = useDispatch();
   const todo = useSelector((state) => state.todo.todos);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // Dispatching the addTodo action with the input value
+
     dispatch(addTodo(input));
     setInput("");
   };
@@ -24,21 +24,37 @@ const App = () => {
         {" "}
         <input
           className="ring-gray-600 border rounded-xl p-2 w-60"
-          placeholder="Enter todo"
+          placeholder="Enter name"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
+        <button
+          type="submit"
+          className="bg-blue-700 px-3 py-2 m-2 rounded-xl text-white"
+        >
+          add{" "}
+        </button>
       </form>
-      {/* Displaying the list of todos */}
-      <div className=" justify-center">
+
+      <div className=" justify-center flex">
         {" "}
-        {todo.map((item, id) => (
-          <ul className="flex justify-center gap-3" key={item.id}>
-            <li>{id + 1}</li>
-            <li> {item.text}</li>
-          </ul>
-        ))}
+        <table className="table-auto  ">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          {todo.map((item, id) => (
+            <tbody key={item.id}>
+              <tr>
+                <td>{id + 1}</td>
+                <td>{item.text}</td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
       </div>
     </div>
   );
